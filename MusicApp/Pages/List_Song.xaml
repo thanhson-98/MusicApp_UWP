@@ -1,0 +1,33 @@
+﻿<Page
+    x:Class="MusicApp.Pages.List_Song"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:MusicApp.Pages"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:entity="using:MusicApp.Entity"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid>
+        <TextBlock>List page</TextBlock>
+        <ListView ItemsSource="{x:Bind ListSongs}">
+            <ListView.ItemTemplate>
+                <DataTemplate x:DataType="entity:Song">
+                    <StackPanel Margin="0,10,0,10" Orientation="Horizontal" Tag="{Binding}">
+                        <Border CornerRadius="10" Width="75" Height="75" >
+                            <Border.Background>
+                                <ImageBrush ImageSource="{x:Bind thumbnail}"/>
+                            </Border.Background>
+                        </Border>
+                        <StackPanel Margin="20,10,0,0" Orientation="Vertical">
+                            <TextBlock FontWeight="Bold" FontSize="16" Text="{x:Bind name}"></TextBlock>
+                            <TextBlock Text="{x:Bind singer}" Style="{ThemeResource CaptionTextBlockStyle}"></TextBlock>
+                        </StackPanel>
+                    </StackPanel>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+
+        </ListView>
+    </Grid>
+</Page>
